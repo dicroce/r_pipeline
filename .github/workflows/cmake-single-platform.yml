@@ -35,6 +35,11 @@ jobs:
         sudo apt-get -y install libavformat58
         sudo apt-get -y install libavutil-dev
         sudo apt-get -y install libavutil56
+        sudo apt-get -y install libgstreamer1.0-dev
+        sudo apt-get -y install libgstreamer-plugins-good1.0-dev
+        sudo apt-get -y install libgstreamer-plugins-base1.0-dev
+        sudo apt-get -y install libgstreamer-plugins-bad1.0-dev
+        sudo apt-get -y install libgstrtspserver-1.0-dev
 
     - name: Configure CMake
       # Configure CMake in a 'build' subdirectory. `CMAKE_BUILD_TYPE` is only required if you are using a single-configuration generator such as make.

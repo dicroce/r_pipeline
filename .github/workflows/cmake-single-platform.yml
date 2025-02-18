@@ -25,7 +25,7 @@ jobs:
     - name: Install package
       run: |
         sudo apt-get -y install uuid-dev
-        sudo apt-get -y install bz2-dev
+        sudo apt-get -y install libbz2-dev
         sudo apt-get -y install libswscale-dev
         sudo apt-get -y install libavdevice-dev
         sudo apt-get -y install libavformat-dev

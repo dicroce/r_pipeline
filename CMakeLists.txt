@@ -5,6 +5,7 @@ set(PROJECT_VERSION_PATCH 1)
 project(r_pipeline VERSION ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}.${PROJECT_VERSION_PATCH})
 
 include(r_build.txt)
+include(FFMPEGConfig.cmake REQUIRED)
 include(FetchContent)
 
 FetchContent_Declare(
@@ -20,8 +21,6 @@ FetchContent_Declare(
     GIT_TAG        main
 )
 FetchContent_MakeAvailable(r_fakey)
-
-find_package(FFMPEGConfig REQUIRED)
 
 add_library(
     r_pipeline

@@ -21,17 +21,7 @@ FetchContent_Declare(
 )
 FetchContent_MakeAvailable(r_fakey)
 
-find_package(PkgConfig)
-pkg_search_module(gstreamer REQUIRED IMPORTED_TARGET gstreamer-1.0)
-pkg_search_module(gstreamer-sdp REQUIRED IMPORTED_TARGET gstreamer-sdp-1.0)
-pkg_search_module(gstreamer-app REQUIRED IMPORTED_TARGET gstreamer-app-1.0)
-pkg_search_module(gstreamer-video REQUIRED IMPORTED_TARGET gstreamer-video-1.0)
-pkg_search_module(gstreamer-rtsp-server REQUIRED IMPORTED_TARGET gstreamer-rtsp-server-1.0)
-pkg_search_module(gstreamer-codecparsers REQUIRED IMPORTED_TARGET gstreamer-codecparsers-1.0)
-pkg_search_module(gstreamer-plugins-base REQUIRED IMPORTED_TARGET gstreamer-plugins-base-1.0)
-pkg_search_module(gstreamer-plugins-good REQUIRED IMPORTED_TARGET gstreamer-plugins-good-1.0)
-pkg_search_module(gstreamer-plugins-bad REQUIRED IMPORTED_TARGET gstreamer-plugins-bad-1.0)
-
+find_package(FFMPEGConfig REQUIRED)
 
 add_library(
     r_pipeline
@@ -52,37 +42,18 @@ target_include_directories(
     include
     ${r_utils_SOURCE_DIR}/include
     ${r_fakey_SOURCE_DIR}/include
-
-    PkgConfig::gstreamer
-    PkgConfig::gstreamer-sdp
-    PkgConfig::gstreamer-app
-    PkgConfig::gstreamer-video
-)
-
-target_compile_options(
-    r_pipeline PUBLIC
-    #PkgConfig::gstreamer
-    #PkgConfig::gstreamer-sdp
-    #PkgConfig::gstreamer-app
-    #PkgConfig::gstreamer-video
-    #    ${GST_CFLAGS}
+    ${GST_INCLUDE_DIRS}
 )
 
 target_link_directories(
     r_pipeline PUBLIC
-    PkgConfig::gstreamer
-    PkgConfig::gstreamer-sdp
-    PkgConfig::gstreamer-app
-    PkgConfig::gstreamer-video
+    ${GST_LIB_DIRS}
 )
 
 target_link_libraries(
     r_pipeline
     r_utils
-    PkgConfig::gstreamer
-    PkgConfig::gstreamer-sdp
-    PkgConfig::gstreamer-app
-    PkgConfig::gstreamer-video
+    ${GST_LIBS}
 )
 
 add_subdirectory(ut)

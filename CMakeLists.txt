@@ -5,7 +5,7 @@ set(PROJECT_VERSION_PATCH 1)
 project(r_pipeline VERSION ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}.${PROJECT_VERSION_PATCH})
 
 include(r_build.txt)
-include(FFMPEGConfig.cmake REQUIRED)
+include(GSTREAMERConfig.cmake REQUIRED)
 include(FetchContent)
 
 FetchContent_Declare(

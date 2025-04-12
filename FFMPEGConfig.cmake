@@ -16,5 +16,5 @@ if(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
 
     set(GST_INCLUDE_DIRS PkgConfig::gstreamer PkgConfig::gstreamer-sdp PkgConfig::gstreamer-app PkgConfig::gstreamer-video)
     set(GST_LIB_DIRS PkgConfig::gstreamer PkgConfig::gstreamer-sdp PkgConfig::gstreamer-app PkgConfig::gstreamer-video)
-    set(GST_LIBS PkgConfig::gstreamer PkgConfig::gstreamer-sdp PkgConfig::gstreamer-app PkgConfig::gstreamer-video)
+    set(GST_LIBS PkgConfig::gstreamer PkgConfig::gstreamer-sdp PkgConfig::gstreamer-app PkgConfig::gstreamer-video PkgConfig::gstreamer-codecparsers)
 endif()

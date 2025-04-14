@@ -1,7 +1,7 @@
 
 if(${CMAKE_SYSTEM_NAME} MATCHES "Windows")
-    set(GST_INCLUDE_DIRS "$ENV{GST_INCLUDE_DIRS}/include/gstreamer-1.0" "$ENV{GST_INCLUDE_DIRS}/include/glib-2.0" "$ENV{GST_INCLUDE_DIRS}/lib/glib-2.0/include")
-    set(GST_LIB_DIRS "$ENV{GST_LIB_DIRS}")
+    set(GST_INCLUDE_DIRS "$ENV{GST_TOP_DIR}/include/gstreamer-1.0" "$ENV{GST_TOP_DIR}/include/glib-2.0" "$ENV{GST_TOP_DIR}/lib/glib-2.0/include")
+    set(GST_LIB_DIRS "$ENV{GST_TOP_DIR}/lib")
     set(GST_LIBS gstreamer-1.0.lib gstapp-1.0.lib gstsdp-1.0.lib gstrtp-1.0.lib gstrtspserver-1.0.lib gstcodecparsers-1.0.lib gobject-2.0.lib gmodule-2.0.lib xml2.lib gthread-2.0.lib glib-2.0.lib)
 endif()
 

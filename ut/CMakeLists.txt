@@ -1,8 +1,9 @@
+include(FFMPEGConfig.cmake REQUIRED)
 
 FetchContent_Declare(
     r_av
     GIT_REPOSITORY https://github.com/dicroce/r_av.git
-    GIT_TAG        main
+    FIND_PACKAGE_ARGS NAMES r_av
 )
 FetchContent_MakeAvailable(r_av)
 
@@ -21,20 +22,11 @@ if(MSVC)
 endif()
 
 target_include_directories(
-    r_pipeline_ut PUBLIC 
-    include
-    ../include
-    ${r_utils_SOURCE_DIR}/include
-    ${r_fakey_SOURCE_DIR}/include
-    ${r_av_SOURCE_DIR}/include
-    ${GST_INCLUDE_DIRS}
+    r_pipeline_ut PUBLIC
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+    $<INSTALL_INTERFACE:include>
 )
-target_link_directories(
-    r_pipeline_ut PUBLIC 
-    ${GST_LIB_DIRS}
-    ${r_av_BUILD_DIR}
-    ${r_fakey_BUILD_DIR}
-)
+
 target_link_libraries(
     r_pipeline_ut LINK_PUBLIC 
     r_fakey
@@ -42,5 +34,6 @@ target_link_libraries(
     r_av
     r_utils
     ${GST_LIBS}
+    ${FFMPEG_LIBS}
     bz2
 )

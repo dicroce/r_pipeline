@@ -52,4 +52,6 @@ target_link_libraries(
 
 add_subdirectory(ut)
 
+if(PROJECT_IS_TOP_LEVEL)
 configure_dev_package("r_pipeline" "A C++ library that uses gstreamer to pull from a media source.")
+endif()

@@ -50,6 +50,10 @@ target_link_libraries(
     ${GST_LIBS}
 )
 
+option(BUILD_INSTALL_DEV_PACKAGES "Install dev packages for subprojects" OFF)
+
 add_subdirectory(ut)
 
-configure_dev_package("r_pipeline" "A C++ library that uses gstreamer to pull from a media source.")
+if(PROJECT_IS_TOP_LEVEL OR BUILD_INSTALL_DEV_PACKAGES)
+    configure_dev_package("r_pipeline" "A C++ library that uses gstreamer to pull from a media source.")
+endif()

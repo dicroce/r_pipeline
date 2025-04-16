@@ -1,14 +1,14 @@
-if(NOT TARGET GStreamer::gstreamer)
+if(NOT TARGET gstreamer)
 
     if(${CMAKE_SYSTEM_NAME} MATCHES "Windows")
-        add_library(GStreamer::gstreamer INTERFACE)
-        target_include_directories(GStreamer::gstreamer INTERFACE
+        add_library(gstreamer INTERFACE)
+        target_include_directories(gstreamer INTERFACE
             "$ENV{GST_TOP_DIR}/include/gstreamer-1.0"
             "$ENV{GST_TOP_DIR}/include/glib-2.0"
             "$ENV{GST_TOP_DIR}/lib/glib-2.0/include"
         )
-        target_link_directories(GStreamer::gstreamer INTERFACE "$ENV{GST_TOP_DIR}/lib")
-        target_link_libraries(GStreamer::gstreamer INTERFACE
+        target_link_directories(gstreamer INTERFACE "$ENV{GST_TOP_DIR}/lib")
+        target_link_libraries(gstreamer INTERFACE
             gstreamer-1.0.lib
             gstapp-1.0.lib
             gstsdp-1.0.lib
@@ -22,7 +22,7 @@ if(NOT TARGET GStreamer::gstreamer)
             glib-2.0.lib
         )
 
-        set(GST_LIBS GStreamer::gstreamer)
+        set(GST_LIBS gstreamer)
     endif()
 
     if(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
@@ -37,13 +37,19 @@ if(NOT TARGET GStreamer::gstreamer)
         pkg_search_module(gstreamer-plugins-good REQUIRED IMPORTED_TARGET gstreamer-plugins-good-1.0)
         pkg_search_module(gstreamer-plugins-bad REQUIRED IMPORTED_TARGET gstreamer-plugins-bad-1.0)
 
-        set(GST_LIBS
+        add_library(gstreamer INTERFACE)
+        target_link_libraries(
+            gstreamer INTERFACE
             PkgConfig::gstreamer
             PkgConfig::gstreamer-sdp
             PkgConfig::gstreamer-app
             PkgConfig::gstreamer-video
             PkgConfig::gstreamer-codecparsers
             PkgConfig::gstreamer-rtsp-server
-        )
+        )            
+
+        set(GST_LIBS gstreamer)
+
     endif()
+    
 endif()

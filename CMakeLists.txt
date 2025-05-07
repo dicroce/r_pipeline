@@ -4,8 +4,8 @@ set(PROJECT_VERSION_MINOR 0)
 set(PROJECT_VERSION_PATCH 1)
 project(r_pipeline VERSION ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}.${PROJECT_VERSION_PATCH})
 
-include(r_build.txt)
 include(GSTREAMERConfig.cmake REQUIRED)
+include(r_build.txt)
 include(FetchContent)
 
 FetchContent_Declare(
